@@ -30,13 +30,13 @@ namespace ParserCombinators
             parsers.Add(p2);
         }
 
-        public Parsers(List<Parsers> parsers)
+        public Parsers(List<Parser> parsers)
         {
             this.parsers.AddRange(parsers);
         }
 
 
-        public Parsers(List<Parsers> parsers, Func<ParserState, ParserState> f = null) : base(f)
+        public Parsers(List<Parser> parsers, Func<ParserState, ParserState> f = null) : base(f)
         {
             this.parsers.AddRange(parsers);
         }

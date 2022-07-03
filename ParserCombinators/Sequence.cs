@@ -11,7 +11,7 @@
         {
         }
 
-        public Sequence(List<Parsers> parsers) : base(parsers)
+        public Sequence(List<Parser> parsers) : base(parsers)
         {
         }
 
@@ -19,7 +19,7 @@
         {
         }
 
-        public Sequence(List<Parsers> parsers, Func<ParserState, ParserState> f = null) : base(parsers, f)
+        public Sequence(List<Parser> parsers, Func<ParserState, ParserState> f = null) : base(parsers, f)
         {
         }
 

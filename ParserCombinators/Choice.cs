@@ -10,7 +10,7 @@
         {
         }
 
-        public Choice(List<Parsers> parsers) : base(parsers)
+        public Choice(List<Parser> parsers) : base(parsers)
         {
         }
 
@@ -18,7 +18,7 @@
         {
         }
 
-        public Choice(List<Parsers> parsers, Func<ParserState, ParserState> f = null) : base(parsers, f)
+        public Choice(List<Parser> parsers, Func<ParserState, ParserState> f = null) : base(parsers, f)
         {
         }
 
