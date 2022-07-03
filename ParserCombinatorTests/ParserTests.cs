@@ -30,5 +30,35 @@ namespace ParserCombinatorTests
 
         }
 
+        [Test]
+        public void CanParseLabel()
+        {
+            var expectedIdent = "this_is_a_label";
+            using (var ms = new MemoryStream(Encoding.UTF8.GetBytes($"    {expectedIdent}:")))
+            {
+                ps.stream = ms;
+                var parser = new Sequence(new ConsumeWhitespace(),
+                    new Identifier(),
+                    new Lit(':'),
+                    parserState =>
+                {
+                    if (parserState.isError)
+                        return parserState;
+
+                    var lps = (parserState as ParserState<List<ParserState>>);
+                    if (lps == null || lps.data.Count < 3)
+                        parserState.ToError("Invalid label found.");
+
+                    return ParserState<string>.WithData(parserState, parserState.index, (lps.data[1] as ParserState<string>)?.data); 
+                });
+
+                var rps = parser.Apply(ps);
+                Assert.IsFalse(rps.isError);
+                Assert.That((rps as ParserState<string>)?.data, Is.EqualTo(expectedIdent));
+            }
+
+        }
+
+
     }
 }
