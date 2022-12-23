@@ -1,16 +1,12 @@
 ﻿using ParserCombinators;
 using System.Text;
 
-
 namespace ParserApp
 {
-
-
     internal class Program
     {
         static void Main(string[] args)
         {
-
             using (var ms = new MemoryStream(Encoding.ASCII.GetBytes("H1ello, World")))
             {
                 ParserState ps = new ParserState();
@@ -43,9 +39,7 @@ namespace ParserApp
                 {
                     Console.WriteLine($"Found literal {(parserState as ParserState<char>)?.data} at index {parserState.index}");
                 }
-
             }
-
         }
     }
 }
